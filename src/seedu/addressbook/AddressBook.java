@@ -1097,8 +1097,13 @@ public class AddressBook {
      * @return whether arg is a valid person email
      */
     private static boolean isPersonEmailValid(String email) {
-        return email.matches("\\S+@\\S+\\.\\S+"); // email is [non-whitespace]@[non-whitespace].[non-whitespace]
-        //TODO: implement a more permissive validation
+        if (email.isEmpty()) {
+            return false;
+        }
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
 
