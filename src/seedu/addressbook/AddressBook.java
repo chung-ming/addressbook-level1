@@ -22,6 +22,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * NOTE : =============================================================
@@ -1064,8 +1066,13 @@ public class AddressBook {
      * @param name to be validated
      */
     private static boolean isPersonNameValid(String name) {
-        return name.matches("(\\w|\\s)+");  // name is nonempty mixture of alphabets and whitespace
-        //TODO: implement a more permissive validation
+        if (name.isEmpty()) {
+            return false;
+        }
+        String nameRegex = "^[A-Za-z\\s]{1,}([A-Za-z][\\.\\s]{0,1})[A-Za-z\\s]{0,}$";
+        Pattern pattern = Pattern.compile(nameRegex);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
     }
 
     /**
