@@ -44,7 +44,7 @@ public class AddressBook {
     /**
      * Version info of the program.
      */
-    private static final String VERSION = "AddessBook Level 1 - Version 1.0";
+    private static final String VERSION = "AddressBook Level 1 - Version 1.0";
 
     /**
      * A decorative prefix added to the beginning of lines printed by AddressBook
@@ -61,7 +61,7 @@ public class AddressBook {
      * These messages shown to the user are defined in one place for convenient
      * editing and proof reading. Such messages are considered part of the UI
      * and may be subjected to review by UI experts or technical writers. Note
-     * that Some of the strings below include '%1$s' etc to mark the locations
+     * that some of the strings below include '%1$s' etc to mark the locations
      * at which java String.format(...) method can insert values.
      * =========================================================================
      */
