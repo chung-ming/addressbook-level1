@@ -19,46 +19,59 @@
 
   # should catch invalid args format
   add wrong args wrong args
-  add Valid Name p/12345 valid@email.butNoPrefix
-  add Valid Name 12345 e/valid@email.butPhonePrefixMissing
+  add Valid Name p/12345 valid@email.butNoPrefix s/male
+  add Valid Name 12345 e/valid@email.butPhonePrefixMissing s/male
   
   # should catch invalid person data
-  add []\[;] p/12345 e/valid@e.mail
-  add Valid Name p/not_numbers e/valid@e.mail
-  add Valid Name p/12345 e/notAnEmail
+  add []\[;] p/12345 e/valid@e.mail s/male
+  add Valid Name p/not_numbers e/valid@e.mail s/male
+  add Valid Name p/12345 e/notAnEmail s/male
 
   # should catch invalid person name
-  add #$%Invalid Name p/12345 e/valid@e.mail
-  add #$% Invalid Name p/12345 e/valid@e.mail
-  add Invalid Name #$% p/12345 e/valid@e.mail
-  add . Invalid Name p/12345 e/valid@e.mail
-  add Invalid . Name p/12345 e/valid@e.mail
-  add Invalid p. Name p/12345 e/valid@e.mail
-  add Invalid P* Name p/98765432 e/johnd@gmail.com
-  add P. Invalid Name p/12345 e/valid@e.mail
+  add 123Invalid Name p/12345 e/valid@e.mail s/male
+  add 123 Invalid Name p/12345 e/valid@e.mail s/male
+  add Invalid Name 123 p/12345 e/valid@e.mail s/male
+  add #$%Invalid Name p/12345 e/valid@e.mail s/male
+  add #$% Invalid Name p/12345 e/valid@e.mail s/male
+  add Invalid Name #$% p/12345 e/valid@e.mail s/male
+  add . Invalid Name p/12345 e/valid@e.mail s/male
+  add Invalid . Name p/12345 e/valid@e.mail s/male
+  add Invalid p. Name p/12345 e/valid@e.mail s/male
+  add Invalid P* Name p/98765432 e/johnd@gmail.com s/male
+  add P. Invalid Name p/12345 e/valid@e.mail s/male
 
   # should catch invalid person phone
-  add Valid Name p/1.2345 e/valid@e.mail
-  add Valid Name p/       e/valid@e.mail
+  add Valid Name p/1.2345 e/valid@e.mail s/male
+  add Valid Name p/       e/valid@e.mail s/male
+  add Valid Name p/1234 e/valid@e.mail s/male
+  add Valid Name p/1234567890123456 e/valid@e.mail s/male
+  add Valid Name p/@#345 e/valid@e.mail s/male 
 
   # should catch invalid person email
-  add Valid Name p/12345 e/invalid@
-  add Valid Name p/12345 e/invalid.e.mail
-  add Valid Name p/12345 e/invalid@e.    
-  add Valid Name p/12345 e/invalid@ .mail
+  add Valid Name p/12345 e/invalid@ s/male
+  add Valid Name p/12345 e/invalid.e.mail s/male
+  add Valid Name p/12345 e/invalid@e.     s/male
+  add Valid Name p/12345 e/invalid@ .mail s/male
+  add Valid Name p/12345 e/invalid@@e.mail s/male
+  add Valid Name p/12345 e/invalid@e..... s/male
+  add Valid Name p/12345 e/invalid@e.1234 s/male
+
+  #should catch invalid person sex
+  add Valid Name p/12345 e/valid@e.mail s/mal
+  add Valid Name p/12345 e/valid@e.mail s/fem12le
 
   # should add correctly
-  add Adam Brown p/111111 e/adam@gmail.com
+  add Adam Brown p/111111 e/adam@gmail.com s/male
   list
-  add Betsy Choo p/222222 e/benchoo@nus.edu.sg
+  add Betsy Choo p/222222 e/benchoo@nus.edu.sg s/female
   list
 
   # order of phone and email should not matter
-  add Charlie Dickson e/charlie.d@nus.edu.sg p/333333
+  add Charlie Dickson e/charlie.d@nus.edu.sg p/333333 s/male
   list
-  add Dickson Ee e/dickson@nus.edu.sg p/444444
+  add Dickson Ee e/dickson@nus.edu.sg p/444444 s/male
   list
-  add Esther Potato p/555555 e/esther@notreal.potato
+  add Esther Potato p/555555 e/esther@notreal.potato s/female
   list
 
 ##########################################################
