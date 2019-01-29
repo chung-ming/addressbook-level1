@@ -27,6 +27,26 @@
   add Valid Name p/not_numbers e/valid@e.mail
   add Valid Name p/12345 e/notAnEmail
 
+  # should catch invalid person name
+  add #$%Invalid Name p/12345 e/valid@e.mail
+  add #$% Invalid Name p/12345 e/valid@e.mail
+  add Invalid Name #$% p/12345 e/valid@e.mail
+  add . Invalid Name p/12345 e/valid@e.mail
+  add Invalid . Name p/12345 e/valid@e.mail
+  add Invalid p. Name p/12345 e/valid@e.mail
+  add Invalid P* Name p/98765432 e/johnd@gmail.com
+  add P. Invalid Name p/12345 e/valid@e.mail
+
+  # should catch invalid person phone
+  add Valid Name p/1.2345 e/valid@e.mail
+  add Valid Name p/       e/valid@e.mail
+
+  # should catch invalid person email
+  add Valid Name p/12345 e/invalid@
+  add Valid Name p/12345 e/invalid.e.mail
+  add Valid Name p/12345 e/invalid@e.    
+  add Valid Name p/12345 e/invalid@ .mail
+
   # should add correctly
   add Adam Brown p/111111 e/adam@gmail.com
   list
