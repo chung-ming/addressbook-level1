@@ -1069,7 +1069,7 @@ public class AddressBook {
         if (name.isEmpty()) {
             return false;
         }
-        String nameRegex = "^[A-Za-z\\s]{1,}([A-Za-z][\\.\\s]{0,1})[A-Za-z\\s]{0,}$";
+        String nameRegex = "^[A-Za-z\\s]{1,}([A-Z][\\.\\s]{0,1})[A-Za-z\\s]{0,}$";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
