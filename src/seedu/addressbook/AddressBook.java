@@ -1081,8 +1081,13 @@ public class AddressBook {
      * @param phone to be validated
      */
     private static boolean isPersonPhoneValid(String phone) {
-        return phone.matches("\\d+");    // phone nonempty sequence of digits
-        //TODO: implement a more permissive validation
+        if (phone.isEmpty()) {
+            return false;
+        }
+        String phoneRegex = "(0/91)?[7-9][0-9]{9}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 
     /**
